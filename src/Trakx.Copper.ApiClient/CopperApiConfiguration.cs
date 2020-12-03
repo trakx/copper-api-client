@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Trakx.Copper.ApiClient
+﻿namespace Trakx.Copper.ApiClient
 {
     public class CopperApiConfiguration
     {
@@ -8,7 +6,6 @@ namespace Trakx.Copper.ApiClient
         public string BaseUrl { get; set; }
         public string ApiKey { get; set; }
         public string ApiSecret { get; set; }
-        public List<string> FavouriteExchanges { get; set; }
 #nullable restore
     }
 }

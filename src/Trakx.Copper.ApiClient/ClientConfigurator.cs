@@ -21,9 +21,6 @@ namespace Trakx.Copper.ApiClient
         {
             switch (clientType.Name)
             {
-                case nameof(MarketDataClient):
-                //case nameof(ExchangesClient):
-                    return new NoCredentialsProvider();
                 default:
                     return _serviceProvider.GetService<ICredentialsProvider>()!;
             }

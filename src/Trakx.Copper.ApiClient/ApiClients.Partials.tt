@@ -8,7 +8,7 @@
 namespace Trakx.Copper.ApiClient
 {
 <# 
-var clientNames = new [] { /*"ExchangesClient", "MarketDataClient",*/ "AccountsClient" };
+var clientNames = new [] { "OrdersClient", "MessageSigningClient","AccountsClient","ProxyWalletsClient" };
 
 foreach(var name in clientNames)
 {

@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Trakx.Copper.ApiClient.Tests
 {
@@ -18,8 +22,7 @@ namespace Trakx.Copper.ApiClient.Tests
             }
         }
 
-        public static string CopperApiKey => Environment.GetEnvironmentVariable("CopperApiConfiguration__ApiKey")!;
-        public static string CopperApiSecret => Environment.GetEnvironmentVariable("CopperApiConfiguration__ApiSecret")!;
+        public static string? ExchangeApiKey => Environment.GetEnvironmentVariable("CopperApiConfiguration__ApiKey");
+        public static string? ExchangeApiSecret => Environment.GetEnvironmentVariable("CopperApiConfiguration__ApiSecret");
     }
-    
 }

@@ -26,7 +26,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
   /platform/bank-accounts:
     get:
       summary: Get bank accounts
@@ -65,7 +65,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
   /platform/crypto-addresses:
     get:
       summary: Get crypto addresses
@@ -104,7 +104,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
   /platform/wallets:
     get:
       summary: Get wallets
@@ -143,7 +143,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
   /platform/delegated-funds:
     get:
       summary: Get delegated funds
@@ -182,7 +182,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
     post:
       summary: Delegate funds
       operationId: Delegatefunds
@@ -234,7 +234,7 @@ paths:
                 delegateOrganizationId: PSHEOTC
             example: "{\n\t\"requestId\": \"{{copperExternalId}}\",\n\t\"portfolioId\": \"9dc6d4a1dd52bae94\",\n\t\"currency\": \"BNB\",\n\t\"mainCurrency\": \"BNB\",\n\t\"amount\": 1,\n\t\"delegateOrganizationId\": \"PSHEOTC\"\n}"
       tags:
-        - Account API
+        - Accounts
   /platform/managed-funds:
     get:
       summary: Get managed funds
@@ -273,7 +273,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
   /platform/orders:
     get:
       summary: Get orders
@@ -317,7 +317,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Orders API
+        - Orders
     post:
       summary: Create order
       operationId: Createorder
@@ -379,8 +379,8 @@ paths:
                   "toAddress": "{{address}}"
               }
       tags:
-        - Orders API
-  '/platform/orders/{orderId}':
+        - Orders
+  /platform/orders/{orderId}:
     get:
       summary: Get order
       operationId: Getorder
@@ -419,7 +419,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Orders API
+        - Orders
     patch:
       summary: Cancel order
       operationId: Cancelorder
@@ -472,7 +472,7 @@ paths:
               example: {}
             example: '{}'
       tags:
-        - Orders API
+        - Orders
   /platform/wallet-messages:
     get:
       summary: Get messages
@@ -541,7 +541,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Message-signing
+        - MessageSigning
     post:
       summary: Create message
       operationId: Createmessage
@@ -597,8 +597,8 @@ paths:
                   "portfolioId": "{{portfolioId}}"
               }
       tags:
-        - Message-signing
-  '/platform/wallet-messages/{messageId}':
+        - MessageSigning
+  /platform/wallet-messages/{messageId}:
     get:
       summary: Get message
       operationId: Getmessage
@@ -637,7 +637,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Message-signing
+        - MessageSigning
     patch:
       summary: Cancel message
       operationId: Cancelmessage
@@ -690,7 +690,7 @@ paths:
               example: {}
             example: '{}'
       tags:
-        - Message-signing
+        - MessageSigning
   /platform/proxy-wallets/:
     post:
       summary: Create proxy wallet
@@ -745,7 +745,7 @@ paths:
                   "targetAddress": "{{address}}"
               }
       tags:
-        - Proxy wallet API
+        - ProxyWallets
     get:
       summary: Get proxy wallets
       operationId: Getproxywallets
@@ -786,8 +786,8 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Proxy wallet API
-  '/platform/proxy-wallets/{proxyWalletId}':
+        - ProxyWallets
+  /platform/proxy-wallets/{proxyWalletId}:
     get:
       summary: Get proxy wallet
       operationId: Getproxywallet
@@ -826,7 +826,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Proxy wallet API
+        - ProxyWallets
   /platform/proxy-transactions/:
     get:
       summary: Get proxy transacrtions
@@ -889,7 +889,7 @@ paths:
           description: ''
           headers: {}
       tags:
-        - Proxy wallet API
+        - ProxyWallets 
 components:
   parameters:
     X-Timestamp:
