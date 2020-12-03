@@ -24,37 +24,37 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get accounts</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetaccountsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetaccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get bank accounts</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetbankaccountsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetbankaccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get crypto addresses</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetcryptoaddressesAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetcryptoaddressesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get wallets</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetwalletsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetwalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get delegated funds</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetdelegatedfundsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetdelegatedfundsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Delegate funds</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> DelegatefundsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> DelegatefundsAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get managed funds</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetmanagedfundsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetmanagedfundsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
     }
     
@@ -87,7 +87,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get accounts</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetaccountsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetaccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/accounts");
@@ -98,18 +98,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -158,7 +146,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get bank accounts</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetbankaccountsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetbankaccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/bank-accounts");
@@ -169,18 +157,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -229,7 +205,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get crypto addresses</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetcryptoaddressesAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetcryptoaddressesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/crypto-addresses");
@@ -240,18 +216,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -300,7 +264,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get wallets</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetwalletsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetwalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/wallets");
@@ -311,18 +275,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -371,7 +323,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get delegated funds</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetdelegatedfundsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetdelegatedfundsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/delegated-funds");
@@ -382,18 +334,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -442,7 +382,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Delegate funds</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> DelegatefundsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> DelegatefundsAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -456,18 +396,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/vnd.update+json");
                     request_.Content = content_;
@@ -519,7 +447,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get managed funds</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetmanagedfundsAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetmanagedfundsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/managed-funds");
@@ -530,18 +458,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -696,22 +612,22 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get orders</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetordersAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetordersAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create order</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> CreateorderAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> CreateorderAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get order</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetorderAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetorderAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Cancel order</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> CancelorderAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string orderId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> CancelorderAsync(string orderId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
     }
     
@@ -744,7 +660,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get orders</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetordersAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetordersAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (externalOrderId == null)
                 throw new System.ArgumentNullException("externalOrderId");
@@ -776,18 +692,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -836,7 +740,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create order</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> CreateorderAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> CreateorderAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -850,18 +754,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
@@ -913,7 +805,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get order</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetorderAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetorderAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -928,18 +820,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -988,7 +868,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Cancel order</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> CancelorderAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string orderId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> CancelorderAsync(string orderId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -1006,18 +886,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/vnd.cancel-order+json");
                     request_.Content = content_;
@@ -1175,22 +1043,22 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get messages</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetmessagesAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetmessagesAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create message</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> CreatemessageAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> CreatemessageAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get message</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetmessageAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string messageId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetmessageAsync(string messageId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Cancel message</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> CancelmessageAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string messageId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> CancelmessageAsync(string messageId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
     }
     
@@ -1223,7 +1091,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get messages</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetmessagesAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetmessagesAsync(double externalOrderId, double updatedSince, double portfolioId, double limit, double offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (externalOrderId == null)
                 throw new System.ArgumentNullException("externalOrderId");
@@ -1255,18 +1123,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -1315,7 +1171,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create message</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> CreatemessageAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> CreatemessageAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1329,18 +1185,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
@@ -1392,7 +1236,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get message</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetmessageAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string messageId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetmessageAsync(string messageId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (messageId == null)
                 throw new System.ArgumentNullException("messageId");
@@ -1407,18 +1251,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -1467,7 +1299,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Cancel message</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> CancelmessageAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string messageId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> CancelmessageAsync(string messageId, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (messageId == null)
                 throw new System.ArgumentNullException("messageId");
@@ -1485,18 +1317,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/vnd.cancel-wallet-message+json");
                     request_.Content = content_;
@@ -1654,22 +1474,22 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create proxy wallet</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> CreateproxywalletAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> CreateproxywalletAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get proxy wallets</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetproxywalletsAsync(double currency, double targetAddress, double targetDestinationTag, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetproxywalletsAsync(double currency, double targetAddress, double targetDestinationTag, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get proxy wallet</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetproxywalletAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string proxyWalletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetproxywalletAsync(string proxyWalletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get proxy transacrtions</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response> GetproxytransacrtionsAsync(double currency, double updatedSince, double limit, double offset, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> GetproxytransacrtionsAsync(double currency, double updatedSince, double limit, double offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
     }
     
@@ -1702,7 +1522,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create proxy wallet</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> CreateproxywalletAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> CreateproxywalletAsync(string body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1716,18 +1536,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
@@ -1779,7 +1587,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get proxy wallets</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetproxywalletsAsync(double currency, double targetAddress, double targetDestinationTag, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetproxywalletsAsync(double currency, double targetAddress, double targetDestinationTag, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (currency == null)
                 throw new System.ArgumentNullException("currency");
@@ -1803,18 +1611,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -1863,7 +1659,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get proxy wallet</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetproxywalletAsync(string x_Timestamp, string authorization, string x_Signature, string content_Type, string proxyWalletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetproxywalletAsync(string proxyWalletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (proxyWalletId == null)
                 throw new System.ArgumentNullException("proxyWalletId");
@@ -1878,18 +1674,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -1938,7 +1722,7 @@ namespace Trakx.Copper.ApiClient
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get proxy transacrtions</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response> GetproxytransacrtionsAsync(double currency, double updatedSince, double limit, double offset, string x_Timestamp, string authorization, string x_Signature, string content_Type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response> GetproxytransacrtionsAsync(double currency, double updatedSince, double limit, double offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (currency == null)
                 throw new System.ArgumentNullException("currency");
@@ -1966,18 +1750,6 @@ namespace Trakx.Copper.ApiClient
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (x_Timestamp == null)
-                        throw new System.ArgumentNullException("x_Timestamp");
-                    request_.Headers.TryAddWithoutValidation("X-Timestamp", ConvertToString(x_Timestamp, System.Globalization.CultureInfo.InvariantCulture));
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("Authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    if (x_Signature == null)
-                        throw new System.ArgumentNullException("x_Signature");
-                    request_.Headers.TryAddWithoutValidation("X-Signature", ConvertToString(x_Signature, System.Globalization.CultureInfo.InvariantCulture));
-                    if (content_Type == null)
-                        throw new System.ArgumentNullException("content_Type");
-                    request_.Headers.TryAddWithoutValidation("Content-Type", ConvertToString(content_Type, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
     
                     PrepareRequest(client_, request_, urlBuilder_);

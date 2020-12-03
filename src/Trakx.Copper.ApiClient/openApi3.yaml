@@ -16,11 +16,6 @@ paths:
     get:
       summary: Get accounts
       operationId: Getaccounts
-      parameters:
-        - $ref: '#/components/parameters/X-Timestamp'
-        - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/X-Signature'
-        - $ref: '#/components/parameters/Content-Type'
       responses:
         '200':
           description: ''
@@ -31,35 +26,6 @@ paths:
     get:
       summary: Get bank accounts
       operationId: Getbankaccounts
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -70,35 +36,6 @@ paths:
     get:
       summary: Get crypto addresses
       operationId: Getcryptoaddresses
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -109,35 +46,6 @@ paths:
     get:
       summary: Get wallets
       operationId: Getwallets
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -148,35 +56,6 @@ paths:
     get:
       summary: Get delegated funds
       operationId: Getdelegatedfunds
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -186,35 +65,6 @@ paths:
     post:
       summary: Delegate funds
       operationId: Delegatefunds
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/vnd.update+json
       responses:
         '200':
           description: ''
@@ -239,35 +89,6 @@ paths:
     get:
       summary: Get managed funds
       operationId: Getmanagedfunds
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -284,34 +105,6 @@ paths:
         - $ref: '#/components/parameters/portfolioId'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -321,35 +114,6 @@ paths:
     post:
       summary: Create order
       operationId: Createorder
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -385,34 +149,6 @@ paths:
       summary: Get order
       operationId: Getorder
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
         - $ref: '#/components/parameters/orderId'
       responses:
         '200':
@@ -424,34 +160,6 @@ paths:
       summary: Cancel order
       operationId: Cancelorder
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/vnd.cancel-order+json
         - name: orderId
           in: path
           required: true
@@ -508,34 +216,6 @@ paths:
           style: form
           schema:
             type: number
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -545,35 +225,6 @@ paths:
     post:
       summary: Create message
       operationId: Createmessage
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -603,34 +254,6 @@ paths:
       summary: Get message
       operationId: Getmessage
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
         - $ref: '#/components/parameters/messageId'
       responses:
         '200':
@@ -642,34 +265,6 @@ paths:
       summary: Cancel message
       operationId: Cancelmessage
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/vnd.cancel-wallet-message+json
         - name: messageId
           in: path
           required: true
@@ -695,35 +290,6 @@ paths:
     post:
       summary: Create proxy wallet
       operationId: Createproxywallet
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -753,34 +319,6 @@ paths:
         - $ref: '#/components/parameters/currency'
         - $ref: '#/components/parameters/targetAddress'
         - $ref: '#/components/parameters/targetDestinationTag'
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -792,34 +330,6 @@ paths:
       summary: Get proxy wallet
       operationId: Getproxywallet
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
         - $ref: '#/components/parameters/proxyWalletId'
       responses:
         '200':
@@ -856,34 +366,6 @@ paths:
           style: form
           schema:
             type: number
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -892,38 +374,6 @@ paths:
         - ProxyWallets 
 components:
   parameters:
-    X-Timestamp:
-      name: X-Timestamp
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: '{{copperCurrentMillis}}'
-    Authorization:
-      name: Authorization
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: 'apikey {{copperApiKey}}'
-    X-Signature:
-      name: X-Signature
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: '{{copperSignature}}'
-    Content-Type:
-      name: Content-Type
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: application/json
     externalOrderId:
       name: externalOrderId
       in: query
