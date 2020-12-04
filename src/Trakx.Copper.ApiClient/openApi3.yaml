@@ -17,12 +17,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  accounts:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/account"
+                $ref: "#/components/schemas/accountResponse"
       tags:
         - Accounts
   /platform/bank-accounts:
@@ -44,12 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  cryptoAddresses:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/cryptoAddress"
+                $ref: "#/components/schemas/cryptoAddressResponse"
       tags:
         - Accounts
   /platform/wallets:
@@ -62,12 +52,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  wallets:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/wallet"
+                $ref: "#/components/schemas/walletResponse"
       tags:
         - Accounts
   /platform/delegated-funds:
@@ -733,6 +718,27 @@ components:
             format: int64
             nullable: true
             description: time of latest crypto address update
+      walletResponse:
+        type: object
+        properties:
+          wallets:
+            type: array
+            items:
+              $ref: "#/components/schemas/wallet"
+      accountResponse:
+        type: object
+        properties:
+          accounts:
+            type: array
+            items:
+              $ref: "#/components/schemas/account"
+      cryptoAddressResponse:
+        type: object
+        properties:
+          cryptoAddresses:
+            type: array
+            items:
+              $ref: "#/components/schemas/cryptoAddress"
   parameters:
     externalOrderId:
       name: externalOrderId

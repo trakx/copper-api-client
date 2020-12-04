@@ -25,7 +25,7 @@ namespace Trakx.Copper.ApiClient
         /// <summary>This retrieves information about all of your accounts, including portfolios and wallets in _embedded section.</summary>
         /// <returns>Return all accounts</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response<Response>> GetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response<AccountResponse>> GetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>This retrieves information about all of your bank accounts.</summary>
@@ -37,13 +37,13 @@ namespace Trakx.Copper.ApiClient
         /// <summary>This retrieves information about all of your whitelisted crypto addresses.</summary>
         /// <returns>Return all white listed addresses</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response<Response2>> GetWhitelistedAddressesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response<CryptoAddressResponse>> GetWhitelistedAddressesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>This retrieves information about all of your wallets. It doesn’t include deposit targets info.</summary>
         /// <returns>return all of the wallets</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Response<Response3>> GetWalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response<WalletResponse>> GetWalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get delegated funds</summary>
@@ -92,7 +92,7 @@ namespace Trakx.Copper.ApiClient
         /// <summary>This retrieves information about all of your accounts, including portfolios and wallets in _embedded section.</summary>
         /// <returns>Return all accounts</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response<Response>> GetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response<AccountResponse>> GetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/accounts");
@@ -127,12 +127,12 @@ namespace Trakx.Copper.ApiClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Response>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<AccountResponse>(response_, headers_).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new Response<Response>(status_, headers_, objectResponse_.Object);
+                            return new Response<AccountResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -218,7 +218,7 @@ namespace Trakx.Copper.ApiClient
         /// <summary>This retrieves information about all of your whitelisted crypto addresses.</summary>
         /// <returns>Return all white listed addresses</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response<Response2>> GetWhitelistedAddressesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response<CryptoAddressResponse>> GetWhitelistedAddressesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/crypto-addresses");
@@ -253,12 +253,12 @@ namespace Trakx.Copper.ApiClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Response2>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<CryptoAddressResponse>(response_, headers_).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new Response<Response2>(status_, headers_, objectResponse_.Object);
+                            return new Response<CryptoAddressResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -284,7 +284,7 @@ namespace Trakx.Copper.ApiClient
         /// <summary>This retrieves information about all of your wallets. It doesn’t include deposit targets info.</summary>
         /// <returns>return all of the wallets</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Response<Response3>> GetWalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Response<WalletResponse>> GetWalletsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/platform/wallets");
@@ -319,12 +319,12 @@ namespace Trakx.Copper.ApiClient
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Response3>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<WalletResponse>(response_, headers_).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new Response<Response3>(status_, headers_, objectResponse_.Object);
+                            return new Response<WalletResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2344,7 +2344,25 @@ namespace Trakx.Copper.ApiClient
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.1.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Response 
+    public partial class WalletResponse 
+    {
+        [Newtonsoft.Json.JsonProperty("wallets", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.List<Wallet> Wallets { get; set; }
+    
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
+    
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties; }
+            set { _additionalProperties = value; }
+        }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.1.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class AccountResponse 
     {
         [Newtonsoft.Json.JsonProperty("accounts", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Account> Accounts { get; set; }
@@ -2362,28 +2380,10 @@ namespace Trakx.Copper.ApiClient
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.1.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Response2 
+    public partial class CryptoAddressResponse 
     {
         [Newtonsoft.Json.JsonProperty("cryptoAddresses", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<CryptoAddress> CryptoAddresses { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.1.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Response3 
-    {
-        [Newtonsoft.Json.JsonProperty("wallets", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.List<Wallet> Wallets { get; set; }
     
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
