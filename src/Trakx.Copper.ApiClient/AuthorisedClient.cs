@@ -1,4 +1,4 @@
-﻿using Trakx.Copper.ApiClient.Utils;
+﻿using Trakx.Utils.Api;
 
 namespace Trakx.Copper.ApiClient
 {

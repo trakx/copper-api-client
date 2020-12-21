@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Polly;
 using Serilog;
 using Trakx.Copper.ApiClient.Utils;
+using Trakx.Utils.Api;
 
 namespace Trakx.Copper.ApiClient
 {

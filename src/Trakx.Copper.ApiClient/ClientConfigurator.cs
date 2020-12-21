@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Trakx.Copper.ApiClient.Utils;
+using Trakx.Utils.Api;
 
 namespace Trakx.Copper.ApiClient
 {

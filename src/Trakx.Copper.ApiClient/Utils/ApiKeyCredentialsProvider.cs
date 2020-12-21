@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using Microsoft.Extensions.Options;
 using Serilog;
+using Trakx.Utils.Api;
 
 namespace Trakx.Copper.ApiClient.Utils
 {
