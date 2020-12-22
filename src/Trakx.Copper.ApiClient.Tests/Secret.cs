@@ -21,5 +21,4 @@ namespace Trakx.Copper.ApiClient.Tests
         public static string CopperApiKey => Environment.GetEnvironmentVariable("CopperApiConfiguration__ApiKey")!;
         public static string CopperApiSecret => Environment.GetEnvironmentVariable("CopperApiConfiguration__ApiSecret")!;
     }
-    
 }

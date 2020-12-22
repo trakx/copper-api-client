@@ -6,13 +6,14 @@ using Microsoft.Extensions.Options;
 using Polly;
 using Serilog;
 using Trakx.Copper.ApiClient.Utils;
+using Trakx.Utils.Api;
 
 namespace Trakx.Copper.ApiClient
 {
     public static partial class AddCopperClientExtension
     {
         public static IServiceCollection AddCopperClient(
-            this IServiceCollection services, IConfiguration configuration)
+           this IServiceCollection services, IConfiguration configuration)
         {
             services.AddOptions();
             services.Configure<CopperApiConfiguration>(
@@ -27,7 +28,7 @@ namespace Trakx.Copper.ApiClient
         {
             var options = Options.Create(apiConfiguration);
             services.AddSingleton(options);
-            
+
             AddCommonDependencies(services);
 
             return services;

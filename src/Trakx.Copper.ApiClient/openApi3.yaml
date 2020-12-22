@@ -1,224 +1,75 @@
 ﻿openapi: 3.0.0
 servers:
   - url: 'https://api.copper.co'
-    description: ''
-    variables: {}
+    description: 'Main copper server'
 info:
-  version: 5aeeeffb-f864-4d25-bc8c-0bb43e95a77f
+  version: '2'
   title: Copper API
-  description: ''
-  termsOfService: ' '
-  contact: {}
-  license:
-    name: ''
+  description: 'This is the copper openApi doc'
 paths:
   /platform/accounts:
     get:
-      summary: Get accounts
-      operationId: Getaccounts
-      parameters:
-        - $ref: '#/components/parameters/X-Timestamp'
-        - $ref: '#/components/parameters/Authorization'
-        - $ref: '#/components/parameters/X-Signature'
-        - $ref: '#/components/parameters/Content-Type'
+      summary: This retrieves information about all of your accounts, including portfolios and wallets in _embedded section.
+      operationId: GetAccounts
       responses:
         '200':
-          description: ''
-          headers: {}
+          description: Return all accounts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/accountResponse"
       tags:
-        - Account API
+        - Accounts
   /platform/bank-accounts:
     get:
-      summary: Get bank accounts
-      operationId: Getbankaccounts
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
+      summary: This retrieves information about all of your bank accounts.
+      operationId: GetBankAccounts
       responses:
         '200':
-          description: ''
-          headers: {}
+          description: Return all bank accounts
       tags:
-        - Account API
+        - Accounts
   /platform/crypto-addresses:
     get:
-      summary: Get crypto addresses
-      operationId: Getcryptoaddresses
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
+      summary: This retrieves information about all of your whitelisted crypto addresses.
+      operationId: GetWhitelistedAddresses
       responses:
         '200':
-          description: ''
-          headers: {}
+          description: 'Return all white listed addresses'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/cryptoAddressResponse"
       tags:
-        - Account API
+        - Accounts
   /platform/wallets:
     get:
-      summary: Get wallets
-      operationId: Getwallets
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
+      summary: This retrieves information about all of your wallets. It doesn’t include deposit targets info.
+      operationId: GetWallets
       responses:
         '200':
-          description: ''
-          headers: {}
+          description: 'return all of the wallets'
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/walletResponse"
       tags:
-        - Account API
+        - Accounts
   /platform/delegated-funds:
     get:
       summary: Get delegated funds
       operationId: Getdelegatedfunds
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
-          headers: {}
       tags:
-        - Account API
+        - Accounts
     post:
       summary: Delegate funds
       operationId: Delegatefunds
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/vnd.update+json
       responses:
         '200':
           description: ''
-          headers: {}
       requestBody:
         required: true
         content:
@@ -234,122 +85,40 @@ paths:
                 delegateOrganizationId: PSHEOTC
             example: "{\n\t\"requestId\": \"{{copperExternalId}}\",\n\t\"portfolioId\": \"9dc6d4a1dd52bae94\",\n\t\"currency\": \"BNB\",\n\t\"mainCurrency\": \"BNB\",\n\t\"amount\": 1,\n\t\"delegateOrganizationId\": \"PSHEOTC\"\n}"
       tags:
-        - Account API
+        - Accounts
   /platform/managed-funds:
     get:
       summary: Get managed funds
       operationId: Getmanagedfunds
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Account API
+        - Accounts
   /platform/orders:
     get:
-      summary: Get orders
-      operationId: Getorders
+      summary: This retrieves information about all of your orders.
+      operationId: GetOrders
       parameters:
-        - $ref: '#/components/parameters/externalOrderId'
+        - in: query
+          name: externalOrderId
+          description: filter by external order id, a list will be returned with one item or empty if nothing found
+          required: false
+          schema:
+            type: string
         - $ref: '#/components/parameters/updatedSince'
         - $ref: '#/components/parameters/portfolioId'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
-          headers: {}
       tags:
-        - Orders API
+        - Orders
     post:
       summary: Create order
       operationId: Createorder
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -379,79 +148,23 @@ paths:
                   "toAddress": "{{address}}"
               }
       tags:
-        - Orders API
-  '/platform/orders/{orderId}':
+        - Orders
+  /platform/orders/{orderId}:
     get:
       summary: Get order
       operationId: Getorder
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
         - $ref: '#/components/parameters/orderId'
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Orders API
+        - Orders
     patch:
       summary: Cancel order
       operationId: Cancelorder
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/vnd.cancel-order+json
         - name: orderId
           in: path
           required: true
@@ -472,7 +185,7 @@ paths:
               example: {}
             example: '{}'
       tags:
-        - Orders API
+        - Orders
   /platform/wallet-messages:
     get:
       summary: Get messages
@@ -508,72 +221,15 @@ paths:
           style: form
           schema:
             type: number
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Message-signing
+        - MessageSigning
     post:
       summary: Create message
       operationId: Createmessage
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -597,79 +253,23 @@ paths:
                   "portfolioId": "{{portfolioId}}"
               }
       tags:
-        - Message-signing
-  '/platform/wallet-messages/{messageId}':
+        - MessageSigning
+  /platform/wallet-messages/{messageId}:
     get:
       summary: Get message
       operationId: Getmessage
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
         - $ref: '#/components/parameters/messageId'
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Message-signing
+        - MessageSigning
     patch:
       summary: Cancel message
       operationId: Cancelmessage
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/vnd.cancel-wallet-message+json
         - name: messageId
           in: path
           required: true
@@ -690,40 +290,11 @@ paths:
               example: {}
             example: '{}'
       tags:
-        - Message-signing
+        - MessageSigning
   /platform/proxy-wallets/:
     post:
       summary: Create proxy wallet
       operationId: Createproxywallet
-      parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
@@ -745,7 +316,7 @@ paths:
                   "targetAddress": "{{address}}"
               }
       tags:
-        - Proxy wallet API
+        - ProxyWallets
     get:
       summary: Get proxy wallets
       operationId: Getproxywallets
@@ -753,80 +324,24 @@ paths:
         - $ref: '#/components/parameters/currency'
         - $ref: '#/components/parameters/targetAddress'
         - $ref: '#/components/parameters/targetDestinationTag'
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Proxy wallet API
-  '/platform/proxy-wallets/{proxyWalletId}':
+        - ProxyWallets
+  /platform/proxy-wallets/{proxyWalletId}:
     get:
       summary: Get proxy wallet
       operationId: Getproxywallet
       parameters:
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
         - $ref: '#/components/parameters/proxyWalletId'
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Proxy wallet API
+        - ProxyWallets
   /platform/proxy-transactions/:
     get:
       summary: Get proxy transacrtions
@@ -856,74 +371,375 @@ paths:
           style: form
           schema:
             type: number
-        - name: X-Timestamp
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperCurrentMillis}}'
-        - name: Authorization
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: 'apikey {{copperApiKey}}'
-        - name: X-Signature
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: '{{copperSignature}}'
-        - name: Content-Type
-          in: header
-          required: true
-          style: simple
-          schema:
-            type: string
-            example: application/json
       responses:
         '200':
           description: ''
           headers: {}
       tags:
-        - Proxy wallet API
+        - ProxyWallets 
+  
+  
+  
 components:
+  schemas:
+      account:
+        type: object
+        properties:
+          accountId:
+            type: string
+            description : unique account identifier
+          organizationId: 
+            type: string
+            description : unique organization identifier that includes this account
+            nullable: true
+          reportingCurrency: 
+            type: string
+            description : currency code used for reports
+          accountName: 
+            type: string
+            description : account name
+          createdBy: 
+            type: string
+            description : account creator user ID
+          createdAt: 
+            type: integer
+            format: int64
+            description : time of account creation
+          updatedBy: 
+            type: integer
+            format: int64
+            nullable: true
+            description: time of latest account update
+          updatingAt: 
+            type: string
+            nullable: true
+            description : user ID that made last account update
+          _embedded:
+            type: object 
+            properties:
+              wallets:
+                type: array
+                items:
+                  $ref: "#/components/schemas/wallet"
+              portfolios:
+                type: array
+                items:
+                  $ref: "#/components/schemas/portfolio"
+      depositTarget:
+        type: object
+        properties:
+          targetType:
+            type: string
+            description: may be crypto or bank-account
+          mainCurrency:
+            type: string
+            nullable: true
+            description : Currency of main blockchain (e.g. may be BTC or ETH for USDT currency)
+          address:
+            type: string
+            nullable: true
+            description: blockchain address
+          destinationTag:
+            type: integer
+            format: int64
+            nullable: true
+            description : address destination tag
+          memo:
+            type: string
+            nullable: true
+            description : address memo
+          accountName:
+            type: string
+            nullable: true
+            description: bank account details
+          recipientAddress:
+            type: string
+            nullable: true
+            description: bank account details
+          iban:
+            type: string
+            nullable: true
+            description: bank account details
+          swiftCode:
+            type: string
+            nullable: true
+            description: bank account details
+          aba:
+            type: string
+            nullable: true
+            description: bank account details
+          bankName:
+            type: string
+            nullable: true
+            description: bank account details
+          bankAddress:
+            type: string
+            nullable: true
+            description: bank account details
+          accountNumber:
+            type: string
+            nullable: true
+            description: bank account details
+          referenceNumber:
+            type: string
+            nullable: true
+            description: bank account details
+          billingAddress:
+            type: string
+            nullable: true
+            description: bank account details
+          sortCode:
+            type: string
+            nullable: true
+            description: bank account details
+      walletExtra:
+        type: object
+        properties:
+          extendedPublicKey:
+            type: string
+            nullable: true
+            description: vault extended public key
+          externalAccountId:
+            type: string
+            nullable: true
+            description: third-party identifier
+      wallet:
+        type: object
+        properties:
+          walletId: 
+            type: string
+            description: unique wallet identifier
+          portfolioId: 
+            type: string
+            description: unique portfolio identifier that includes this wallet
+          currency: 
+            type: string
+            description: wallet currency
+          mainCurrency: 
+            type: string
+            nullable: true
+            description: for Vault Currency of main blockchain (e.g. For USDT, it could be either ETH or BTC)
+          balance: 
+            type: number
+            format: double
+            description: current total balance
+          reserve: 
+            type: number
+            format: double
+            description: reserved balance
+          createdBy:
+            type: string
+            description: wallet creator user ID
+          updatedBy:
+            type: string
+            nullable: true
+            description: user ID that made last wallet update
+          createdAt:
+            type: integer
+            format: int64
+            description: time of wallet creation
+          updatedAt:
+            type: integer
+            format: int64
+            nullable: true
+            description: time of latest wallet update
+          extra: 
+            $ref: "#/components/schemas/walletExtra"
+          accountId: 
+            type: string
+            description: unique account identifier that includes this wallet
+          organizationId:
+            type: string
+            nullable: true
+            description: unique organization identifier that includes this wallet
+          _embedded: 
+            nullable: true
+            type: array
+            items:
+              $ref: "#/components/schemas/depositTarget"
+      portfolio:
+        type: object
+        properties:
+          portfolioId:
+            type: string
+            description: unique portfolio identifier
+          accountId:
+            type: string
+            description: unique account identifier
+          portfolioName	:
+            type: string
+            description: portfolio name
+          portfolioType:
+            description: portfolio type
+            type: string
+            enum:
+              - custody
+              - trading
+              - external
+          createdBy:
+            type: string
+            description: portfolio creator user ID
+          updatedBy:
+            type: string
+            nullable: true
+            description: user ID that made last portfolio update
+          createdAt:
+            type: integer
+            format: int64
+            description: time of portfolio creation
+          updatedAt:
+            type: integer
+            format: int64
+            nullable: true
+            description: time of latest portfolio update
+          isActive:
+            type: boolean
+            description: Boolean flag shows active status for portfolio (archived or not)
+          organizationId:
+            type: string
+            nullable: true
+            description: unique organization identifier that includes this portfolio
+          extra:
+            $ref: "#/components/schemas/portfolioExtra"
+      portfolioExtra:
+        type: object
+        properties: 
+          exchange:
+            type: string
+            nullable: true
+            description: external portfolio exchange
+          exchangeWalletType:   
+            type: string
+            nullable: true
+            description: external portfolio exchange type
+          tradingKeys: 
+            type: object
+            nullable : true
+            description: trading keys for external portfolio
+            additionalProperties:
+              type: string
+              description: public part of trading key
+          viewKeys: 
+            type: object
+            nullable : true
+            description: view only keys for external portfolio
+            additionalProperties:
+              type: string
+              description: public part of view only key
+          bitstampId:
+            type: string
+            nullable: true
+            description: for Bitstamp external account
+          parentPortfolioId	:
+            type: string
+            nullable: true
+            description: if external account depends on other external account
+          deribitAccountId	:
+            type: string
+            nullable: true
+            description: for Deribit external account
+          huobiAccountId: 
+            type: string
+            nullable: true
+            description: for Huobi external account
+          usdWithdrawalLimit:
+            type: number
+            nullable: true
+            format: double
+          baseCurrency: 
+            type: string
+            nullable: true
+            description: for external account that use margin pair
+          quoteCurrency: 
+            type: string
+            nullable: true
+            description: for external account that use margin pair
+          showWalletBalance:
+            description: what type of balance to show for external account
+            type: string
+            enum:
+              - real
+              - margin
+          externalAccountId: 
+            type: string
+            nullable: true
+            description: third-party identifier
+      cryptoAddress:
+        type: object
+        properties:
+          cryptoAddressId: 
+            type: string
+            description: unique crypto address identifier
+          accountId: 
+            type: string
+            description: unique account identifier
+          organizationId: 
+            type: string
+            nullable: true
+            description: unique organization identifier
+          currency:
+            type: string
+            description: crypto address currency
+          mainCurrency: 
+            type: string
+            nullable: true
+            description: Currency of main blockchain (e.g. may be BTC or ETH for USDT currency)
+          name: 
+            type: string
+            description: crypto address name
+          address:
+            type: string
+          destinationTag: 
+            type: integer
+            format: int64
+            description: destination tag for XRP address
+          memo:
+            type: string
+            nullable: true
+            description: additional identifier for address
+          lastUsedAt:
+            type: integer
+            format: int64
+            nullable: true
+            description: time of last usage for crypto address
+          createdBy:
+            type: string
+            description: crypto address creator user ID
+          updatedBy:
+            type: string
+            nullable: true
+            description: user ID that made last crypto address update
+          createdAt:
+            type: integer
+            format: int64
+            description: time of crypto address creation
+          updatedAt:
+            type: integer
+            format: int64
+            nullable: true
+            description: time of latest crypto address update
+      walletResponse:
+        type: object
+        properties:
+          wallets:
+            type: array
+            items:
+              $ref: "#/components/schemas/wallet"
+      accountResponse:
+        type: object
+        properties:
+          accounts:
+            type: array
+            items:
+              $ref: "#/components/schemas/account"
+      cryptoAddressResponse:
+        type: object
+        properties:
+          cryptoAddresses:
+            type: array
+            items:
+              $ref: "#/components/schemas/cryptoAddress"
   parameters:
-    X-Timestamp:
-      name: X-Timestamp
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: '{{copperCurrentMillis}}'
-    Authorization:
-      name: Authorization
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: 'apikey {{copperApiKey}}'
-    X-Signature:
-      name: X-Signature
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: '{{copperSignature}}'
-    Content-Type:
-      name: Content-Type
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        example: application/json
     externalOrderId:
       name: externalOrderId
       in: query
@@ -1004,24 +820,3 @@ components:
       style: form
       schema:
         type: number
-security: []
-tags: []
-externalDocs:
-  url: 'https://docs.copper.co/'
-  description: ''
-warnings:
-  - >-
-    Two GET or two POST methods for the same path are not allowed in OpenAPI
-    specification : post{{copperHost}}/platform/orders
-  - >-
-    Two GET or two POST methods for the same path are not allowed in OpenAPI
-    specification : patch{{copperHost}}/platform/orders/{{orderId}}
-  - >-
-    Two GET or two POST methods for the same path are not allowed in OpenAPI
-    specification : patch{{copperHost}}/platform/orders/{{orderId}}
-  - >-
-    Two GET or two POST methods for the same path are not allowed in OpenAPI
-    specification : patch{{copperHost}}/platform/orders/{{orderId}}
-  - >-
-    Two GET or two POST methods for the same path are not allowed in OpenAPI
-    specification : patch{{copperHost}}/platform/wallet-messages/{{messageId}}

@@ -15,7 +15,7 @@ namespace Trakx.Copper.ApiClient
         {
             var delay = Backoff.DecorrelatedJitterBackoffV2(medianFirstRetryDelay: TimeSpan.FromMilliseconds(100), retryCount: 10, fastFirst: true);
                                     
-            services.AddHttpClient<IMarketDataClient, MarketDataClient>()
+            services.AddHttpClient<IOrdersClient, OrdersClient>()
                 .AddPolicyHandler((s, request) => 
                     Policy<HttpResponseMessage>
                     .Handle<ApiException>()
@@ -24,10 +24,25 @@ namespace Trakx.Copper.ApiClient
                     .WaitAndRetryAsync(delay,
                         onRetry: (result, timeSpan, retryCount, context) =>
                         {
-                            var logger = Log.Logger.ForContext<MarketDataClient>();
+                            var logger = Log.Logger.ForContext<OrdersClient>();
                             LogFailure(logger, result, timeSpan, retryCount, context);
                         })
-                    .WithPolicyKey("MarketDataClient"));
+                    .WithPolicyKey("OrdersClient"));
+
+                                
+            services.AddHttpClient<IMessageSigningClient, MessageSigningClient>()
+                .AddPolicyHandler((s, request) => 
+                    Policy<HttpResponseMessage>
+                    .Handle<ApiException>()
+                    .Or<HttpRequestException>()
+                    .OrTransientHttpStatusCode()
+                    .WaitAndRetryAsync(delay,
+                        onRetry: (result, timeSpan, retryCount, context) =>
+                        {
+                            var logger = Log.Logger.ForContext<MessageSigningClient>();
+                            LogFailure(logger, result, timeSpan, retryCount, context);
+                        })
+                    .WithPolicyKey("MessageSigningClient"));
 
                                 
             services.AddHttpClient<IAccountsClient, AccountsClient>()
@@ -43,6 +58,21 @@ namespace Trakx.Copper.ApiClient
                             LogFailure(logger, result, timeSpan, retryCount, context);
                         })
                     .WithPolicyKey("AccountsClient"));
+
+                                
+            services.AddHttpClient<IProxyWalletsClient, ProxyWalletsClient>()
+                .AddPolicyHandler((s, request) => 
+                    Policy<HttpResponseMessage>
+                    .Handle<ApiException>()
+                    .Or<HttpRequestException>()
+                    .OrTransientHttpStatusCode()
+                    .WaitAndRetryAsync(delay,
+                        onRetry: (result, timeSpan, retryCount, context) =>
+                        {
+                            var logger = Log.Logger.ForContext<ProxyWalletsClient>();
+                            LogFailure(logger, result, timeSpan, retryCount, context);
+                        })
+                    .WithPolicyKey("ProxyWalletsClient"));
 
         }
     }

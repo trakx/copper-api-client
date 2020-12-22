@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Xunit;
@@ -38,7 +38,7 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
             {
                 ApiKey = Secrets.CopperApiKey,
                 ApiSecret = Secrets.CopperApiSecret,
-                BaseUrl = "https://api.copper.io"
+                BaseUrl = "https://api.copper.co"
             };
 
             var serviceCollection = new ServiceCollection();
