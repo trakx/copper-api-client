@@ -6,9 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{F9183CBB-5B9E-4E27-A07E-261D68E1A66A}"
 	ProjectSection(SolutionItems) = preProject
 		.env = .env
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
 		Common.Projects.props = Common.Projects.props
+		..\LICENSE = ..\LICENSE
 		Packable.Projects.props = Packable.Projects.props
 		package-icon.png = package-icon.png
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{02EBA6A7-CCC3-4919-A39B-8C9053F64C27}"
@@ -19,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		..\.github\workflows\publish.nuget.yml = ..\.github\workflows\publish.nuget.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trakx.Copper.ApiClient", "Trakx.Copper.ApiClient\Trakx.Copper.ApiClient.csproj", "{7802A645-EAE0-4EB0-A264-53F91B2057E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trakx.Copper.ApiClient", "Trakx.Copper.ApiClient\Trakx.Copper.ApiClient.csproj", "{7802A645-EAE0-4EB0-A264-53F91B2057E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trakx.Copper.ApiClient.Tests", "Trakx.Copper.ApiClient.Tests\Trakx.Copper.ApiClient.Tests.csproj", "{FC236D16-B844-4B4B-BA77-894C9D7EABF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trakx.Copper.ApiClient.Tests", "Trakx.Copper.ApiClient.Tests\Trakx.Copper.ApiClient.Tests.csproj", "{FC236D16-B844-4B4B-BA77-894C9D7EABF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
