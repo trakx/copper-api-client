@@ -15,7 +15,7 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
             _accountsClient = ServiceProvider.GetRequiredService<IAccountsClient>();
         }
 
-        [Fact(Skip = "should have api keys and accounts")]
+        [Fact]
         public async Task GetAccount_should_send_back_all_accounts()
         {
             var response=await _accountsClient.GetAccountsAsync();
