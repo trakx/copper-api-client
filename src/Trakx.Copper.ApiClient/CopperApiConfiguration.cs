@@ -5,13 +5,12 @@ namespace Trakx.Copper.ApiClient
     public class CopperApiConfiguration
     {
 #nullable disable
-        [SecretEnvironmentVariable("CopperApiConfiguration__BaseUrl")]
         public string BaseUrl { get; set; }
 
-        [SecretEnvironmentVariable("CopperApiConfiguration__ApiKey")]
+        [SecretEnvironmentVariable]
         public string ApiKey { get; set; }
 
-        [SecretEnvironmentVariable("CopperApiConfiguration__ApiSecret")]
+        [SecretEnvironmentVariable]
         public string ApiSecret { get; set; }
 #nullable restore
     }

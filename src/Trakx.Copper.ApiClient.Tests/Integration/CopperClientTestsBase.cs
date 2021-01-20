@@ -36,8 +36,8 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
         {
             var configuration = new CopperApiConfiguration()
             {
-                ApiKey = Secrets.CopperApiKey,
-                ApiSecret = Secrets.CopperApiSecret,
+                ApiKey = new Secrets().CopperApiKey,
+                ApiSecret = new Secrets().CopperApiSecret,
                 BaseUrl = "https://api.copper.co"
             };
 
