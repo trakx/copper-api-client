@@ -6,7 +6,7 @@ using Xunit.Abstractions;
 
 namespace Trakx.Copper.ApiClient.Tests.Integration
 {
-    public class AccountsClientTests: CopperClientTestsBase
+    public class AccountsClientTests : CopperClientTestsBase
     {
         private readonly IAccountsClient _accountsClient;
 
@@ -18,8 +18,18 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
         [Fact]
         public async Task GetAccount_should_send_back_all_accounts()
         {
-            var response=await _accountsClient.GetAccountsAsync();
+            var response = await _accountsClient.GetAccountsAsync(); 
             response.Result.Accounts.Should().NotBeNullOrEmpty();
+            response.Result.Accounts[0].OrganizationId.Should().Be("TRAK");
+            response.Result.Accounts[0]._embedded.Wallets.Should().NotBeNullOrEmpty();
+        }
+
+        [Fact]
+        public async Task GetWallets_should_send_back_all_wallets()
+        {
+            var response = await _accountsClient.GetWalletsAsync();
+            response.Result.Wallets.Should().NotBeNullOrEmpty();
+            response.Result.Wallets[0].Balance.Should().BeGreaterOrEqualTo(0.001);
         }
     }
 }
