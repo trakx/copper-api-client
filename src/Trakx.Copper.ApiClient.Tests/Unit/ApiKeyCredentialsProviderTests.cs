@@ -52,7 +52,7 @@ namespace Trakx.Copper.ApiClient.Tests.Unit
             _apiKeyCredentials.AddCredentials(message);
 
             var retrievedSignature = message.Headers.GetValues(ApiKeyCredentialsProvider.ApiSignatureHeader).Single();
-            await VerifySignature(message, retrievedSignature);
+            await VerifySignature(message, retrievedSignature).ConfigureAwait(false);
         }
 
         [Fact]

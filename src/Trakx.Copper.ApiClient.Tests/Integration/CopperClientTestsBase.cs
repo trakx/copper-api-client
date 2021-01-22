@@ -30,11 +30,11 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
 
     public class CopperApiFixture : IDisposable
     {
-        public ServiceProvider ServiceProvider;
+        internal readonly ServiceProvider ServiceProvider;
 
         public CopperApiFixture()
         {
-            var configuration = new CopperApiConfiguration()
+            var configuration = new CopperApiConfiguration
             {
                 ApiKey = new Secrets().CopperApiKey,
                 ApiSecret = new Secrets().CopperApiSecret,
