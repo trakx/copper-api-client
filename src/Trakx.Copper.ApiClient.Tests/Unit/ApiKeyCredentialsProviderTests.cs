@@ -55,19 +55,6 @@ namespace Trakx.Copper.ApiClient.Tests.Unit
             await VerifySignature(message, retrievedSignature).ConfigureAwait(false);
         }
 
-        [Fact]
-        public void Signature_should_depends_of_message_content()
-        {
-            var message1 = new HttpRequestMessage(HttpMethod.Put, new Uri(_configuration.BaseUrl + "/dev/now"));
-            _apiKeyCredentials.AddCredentials(message1);
-            var message2 = new HttpRequestMessage(HttpMethod.Post, new Uri(_configuration.BaseUrl + "/january"));
-            _apiKeyCredentials.AddCredentials(message2);
-
-            var signature1 = message1.Headers.GetValues(ApiKeyCredentialsProvider.ApiSignatureHeader).Single();
-            var signature2 = message2.Headers.GetValues(ApiKeyCredentialsProvider.ApiSignatureHeader).Single();
-            signature1.Should().NotBeEquivalentTo(signature2);
-        }
-
         private async Task VerifySignature(HttpRequestMessage requestMessage, string retrievedSignature)
         {
             var body = await requestMessage.Content?.ReadAsStringAsync();

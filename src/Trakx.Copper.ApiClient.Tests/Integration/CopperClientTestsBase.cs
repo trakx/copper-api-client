@@ -34,10 +34,11 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
 
         public CopperApiFixture()
         {
+            var environmentsVariables = new Secrets();
             var configuration = new CopperApiConfiguration
             {
-                ApiKey = new Secrets().CopperApiKey,
-                ApiSecret = new Secrets().CopperApiSecret,
+                ApiKey = environmentsVariables.CopperApiKey,
+                ApiSecret = environmentsVariables.CopperApiSecret,
                 BaseUrl = "https://api.copper.co"
             };
 
