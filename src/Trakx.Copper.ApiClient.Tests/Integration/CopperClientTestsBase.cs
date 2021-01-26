@@ -30,14 +30,15 @@ namespace Trakx.Copper.ApiClient.Tests.Integration
 
     public class CopperApiFixture : IDisposable
     {
-        public ServiceProvider ServiceProvider;
+        internal readonly ServiceProvider ServiceProvider;
 
         public CopperApiFixture()
         {
-            var configuration = new CopperApiConfiguration()
+            var environmentsVariables = new Secrets();
+            var configuration = new CopperApiConfiguration
             {
-                ApiKey = Secrets.CopperApiKey,
-                ApiSecret = Secrets.CopperApiSecret,
+                ApiKey = environmentsVariables.CopperApiKey,
+                ApiSecret = environmentsVariables.CopperApiSecret,
                 BaseUrl = "https://api.copper.co"
             };
 

@@ -1,11 +1,17 @@
-﻿namespace Trakx.Copper.ApiClient
+﻿using Trakx.Utils.Attributes;
+
+namespace Trakx.Copper.ApiClient
 {
-    public class CopperApiConfiguration
+    public record CopperApiConfiguration
     {
 #nullable disable
-        public string BaseUrl { get; set; }
-        public string ApiKey { get; set; }
-        public string ApiSecret { get; set; }
+        public string BaseUrl { get; init; }
+
+        [SecretEnvironmentVariable]
+        public string ApiKey { get; init; }
+
+        [SecretEnvironmentVariable]
+        public string ApiSecret { get; init; }
 #nullable restore
     }
 }
