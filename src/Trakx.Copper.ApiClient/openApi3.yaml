@@ -553,10 +553,12 @@ components:
             nullable: true
             description: unique organization identifier that includes this wallet
           _embedded: 
-            nullable: true
-            type: array
-            items:
-              $ref: "#/components/schemas/depositTarget"
+            type: object 
+            properties:
+              depositTargets:
+                type: array
+                items:
+                  $ref: "#/components/schemas/depositTarget"
       portfolio:
         type: object
         properties:
@@ -572,8 +574,10 @@ components:
           portfolioType:
             description: portfolio type
             type: string
+            nullable: true
             enum:
               - custody
+              - trading-vault
               - trading
               - external
           createdBy:

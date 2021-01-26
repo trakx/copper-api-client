@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Serilog;
 using Trakx.Utils.Apis;
 using Trakx.Utils.DateTimeHelpers;
+using Trakx.Utils.Extensions;
 
 namespace Trakx.Copper.ApiClient.Utils
 {
@@ -32,7 +33,7 @@ namespace Trakx.Copper.ApiClient.Utils
             _dateTimeProvider = dateTimeProvider;
 
             _tokenSource = new CancellationTokenSource();
-            _encodingSecret = Convert.FromBase64String(_configuration.ApiSecret);
+            _encodingSecret = Encoding.UTF8.GetBytes(_configuration.ApiSecret);
         }
 
 
@@ -58,8 +59,8 @@ namespace Trakx.Copper.ApiClient.Utils
 
         private string GetTimestamp() => _dateTimeProvider.UtcNowAsOffset.ToUnixTimeMilliseconds()
             .ToString(CultureInfo.InvariantCulture);
-        private string GetSignature(string preHash) => Convert.ToBase64String(new HMACSHA256(_encodingSecret)
-            .ComputeHash(Encoding.UTF8.GetBytes(preHash)));
+        private string GetSignature(string preHash) => new HMACSHA256(_encodingSecret)
+            .ComputeHash(Encoding.UTF8.GetBytes(preHash)).ToHexString();
 
         #region IDisposable
 
