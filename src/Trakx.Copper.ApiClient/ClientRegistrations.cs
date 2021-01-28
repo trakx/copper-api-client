@@ -6,7 +6,6 @@ using Polly.Contrib.WaitAndRetry;
 using Polly.Extensions.Http;
 using Serilog;
 
-
 namespace Trakx.Copper.ApiClient
 {
     public static partial class AddCopperClientExtension
@@ -15,7 +14,7 @@ namespace Trakx.Copper.ApiClient
         {
             var delay = Backoff.DecorrelatedJitterBackoffV2(medianFirstRetryDelay: TimeSpan.FromMilliseconds(100), retryCount: 10, fastFirst: true);
                                     
-            services.AddHttpClient<IOrdersClient, OrdersClient>()
+            services.AddHttpClient<IOrdersClient, OrdersClient>("Trakx.Copper.ApiClient.OrdersClient")
                 .AddPolicyHandler((s, request) => 
                     Policy<HttpResponseMessage>
                     .Handle<ApiException>()
@@ -30,7 +29,7 @@ namespace Trakx.Copper.ApiClient
                     .WithPolicyKey("OrdersClient"));
 
                                 
-            services.AddHttpClient<IMessageSigningClient, MessageSigningClient>()
+            services.AddHttpClient<IMessageSigningClient, MessageSigningClient>("Trakx.Copper.ApiClient.MessageSigningClient")
                 .AddPolicyHandler((s, request) => 
                     Policy<HttpResponseMessage>
                     .Handle<ApiException>()
@@ -45,7 +44,7 @@ namespace Trakx.Copper.ApiClient
                     .WithPolicyKey("MessageSigningClient"));
 
                                 
-            services.AddHttpClient<IAccountsClient, AccountsClient>()
+            services.AddHttpClient<IAccountsClient, AccountsClient>("Trakx.Copper.ApiClient.AccountsClient")
                 .AddPolicyHandler((s, request) => 
                     Policy<HttpResponseMessage>
                     .Handle<ApiException>()
@@ -60,7 +59,7 @@ namespace Trakx.Copper.ApiClient
                     .WithPolicyKey("AccountsClient"));
 
                                 
-            services.AddHttpClient<IProxyWalletsClient, ProxyWalletsClient>()
+            services.AddHttpClient<IProxyWalletsClient, ProxyWalletsClient>("Trakx.Copper.ApiClient.ProxyWalletsClient")
                 .AddPolicyHandler((s, request) => 
                     Policy<HttpResponseMessage>
                     .Handle<ApiException>()
