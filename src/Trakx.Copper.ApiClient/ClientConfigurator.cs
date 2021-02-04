@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Trakx.Copper.ApiClient.Utils;
 using Trakx.Utils.Apis;
 
 namespace Trakx.Copper.ApiClient
@@ -22,7 +23,7 @@ namespace Trakx.Copper.ApiClient
             switch (clientType.Name)
             {
                 default:
-                    return _serviceProvider.GetService<ICredentialsProvider>()!;
+                    return _serviceProvider.GetService<ICopperCredentialsProvider>()!;
             }
         }
     }

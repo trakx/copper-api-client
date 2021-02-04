@@ -13,7 +13,8 @@ using Trakx.Utils.Extensions;
 
 namespace Trakx.Copper.ApiClient.Utils
 {
-    public class ApiKeyCredentialsProvider : ICredentialsProvider, IDisposable
+    public interface ICopperCredentialsProvider : ICredentialsProvider { };
+    public class ApiKeyCredentialsProvider : ICopperCredentialsProvider, IDisposable
     {
         internal const string ApiKeyHeader = "ApiKey";
         internal const string ApiSignatureHeader = "X-Signature";

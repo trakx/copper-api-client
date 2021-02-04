@@ -6,7 +6,6 @@ using Microsoft.Extensions.Options;
 using Polly;
 using Serilog;
 using Trakx.Copper.ApiClient.Utils;
-using Trakx.Utils.Apis;
 using Trakx.Utils.DateTimeHelpers;
 
 namespace Trakx.Copper.ApiClient
@@ -38,7 +37,7 @@ namespace Trakx.Copper.ApiClient
         private static void AddCommonDependencies(IServiceCollection services)
         {
             services.AddSingleton(s => new ClientConfigurator(s));
-            services.AddSingleton<ICredentialsProvider, ApiKeyCredentialsProvider>();
+            services.AddSingleton<ICopperCredentialsProvider, ApiKeyCredentialsProvider>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
             AddClients(services);
         }
