@@ -77,7 +77,7 @@ namespace Trakx.Copper.ApiClient.Utils
         {
             if (!disposing) return;
             _tokenSource.Cancel();
-            _tokenSource?.Dispose();
+            _tokenSource.Dispose();
         }
 
         /// <inheritdoc />
