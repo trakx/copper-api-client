@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Trakx.Utils.Apis;
@@ -56,6 +57,13 @@ namespace Trakx.Copper.ApiClient.Utils
             msg.Headers.Add(ApiSignatureHeader, GetSignature(prehashString));
             Logger.Verbose("Headers added");
         }
+
+        public Task AddCredentialsAsync(HttpRequestMessage msg)
+        {
+            AddCredentials(msg);
+            return Task.CompletedTask;
+        }
+
         #endregion
 
         private string GetTimestamp() => _dateTimeProvider.UtcNowAsOffset.ToUnixTimeMilliseconds()
@@ -69,7 +77,7 @@ namespace Trakx.Copper.ApiClient.Utils
         {
             if (!disposing) return;
             _tokenSource.Cancel();
-            _tokenSource?.Dispose();
+            _tokenSource.Dispose();
         }
 
         /// <inheritdoc />
